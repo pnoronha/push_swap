@@ -6,7 +6,7 @@
 #    By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/02/12 14:34:33 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/02/13 10:02:50 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,22 @@ SOURCES		:=	$(wildcard $(SRC_DIR)/*.c)
 OBJECTS		:=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
-# flags used for compilation
+# comilation variables
+CC			:=	gcc
 CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror -O0
 
 
-.PHONY: all build clean fclean re
+.PHONY: all clean fclean re
 
 # compiling binary executable file
 $(BIN):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
-		gcc $(CFLAGS) -o $(@) $(<) -L$(LIBFT_DIR) -lft
+		$(CC) $(CFLAGS) -o $(@) $(<) -L$(LIBFT_DIR) -lft
 
 all:	$(BIN)
 
 # compiling object files
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | $(BUILD_DIR)
-		gcc $(CFLAGS) -c $(^) -o $(@)
+		$(CC) $(CFLAGS) -c $(^) -o $(@)
 
 # library compilation
 $(LIBFT):
@@ -52,9 +53,10 @@ $(BUILD_DIR):
 		@mkdir -p $(OBJ_DIR) $(BIN_DIR)
 
 clean:
-		@rm -rf $(BUILD_DIR)
+		@rm -rf $(OBJ_DIR)
 
-fclean:
+fclean:	clean
+		@rm -rf $(BUILD_DIR)
 		@make fclean -C $(LIBFT_DIR)
 
 re:		fclean all
