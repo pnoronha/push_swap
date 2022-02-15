@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/15 00:38:36 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/15 02:49:00 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ static int	is_not_duplicated(t_data *data);
 void	input_parse(t_data *data)
 {
 	int		index;
-	char	**tmp_values;
 
-	tmp_values = data->values;
 	index = 0;
 	while (index < data->number_count)
 	{
-		if (!is_number(*data->values) || !is_interger(*data->values))
+		if (!is_number(data->values[index])
+			|| !is_interger(data->values[index]))
 			input_error();
-		data->values++;
 		index++;
 	}
-	data->values = tmp_values;
 	if (!is_not_duplicated(data))
 		input_error();
 	return ;
@@ -74,8 +71,8 @@ static int	is_interger(char *number)
 static int	is_not_duplicated(t_data *data)
 {
 	int	*values_arr;
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	values_arr = (int *)malloc(sizeof(int) * data->number_count + 1);
@@ -96,5 +93,6 @@ static int	is_not_duplicated(t_data *data)
 		}
 		i++;
 	}
+	free(values_arr);
 	return (SUCCESS);
 }
