@@ -6,7 +6,7 @@
 #    By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/02/13 10:02:50 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/02/14 19:20:20 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror -O0
 
 # compiling binary executable file
 $(BIN):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
-		$(CC) $(CFLAGS) -o $(@) $(<) -L$(LIBFT_DIR) -lft
+		$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
 
 all:	$(BIN)
 
