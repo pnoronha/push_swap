@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:37:50 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/15 00:39:50 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/15 02:44:21 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	main(int argc, char **argv)
 		input_error();
 	data.number_count = (argc - 1);
 	data.values = (argv + 1);
-	data.stack_a = NULL;
 	input_parse(&data);
+	//data.stack_a = fill_stack(&data);
+	//stack_iter(data.stack_a);
 	return (EXIT_SUCCESS);
 }
 
