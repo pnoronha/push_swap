@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/15 02:49:00 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/16 00:50:37 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ static int	is_not_duplicated(t_data *data)
 	int	j;
 
 	i = 0;
-	values_arr = (int *)malloc(sizeof(int) * data->number_count + 1);
+	values_arr = (int *)malloc(sizeof(int) * data->number_count);
 	while (i < data->number_count)
 	{
 		values_arr[i] = ft_atoi(data->values[i]);
 		i++;
 	}
 	i = 0;
-	while (i + 1 <= data->number_count)
+	while (i < data->number_count)
 	{
 		j = i + 1;
-		while (values_arr[j] != '\0')
+		while (j < data->number_count)
 		{
 			if (values_arr[i] == values_arr[j])
 				return (FAILURE);
