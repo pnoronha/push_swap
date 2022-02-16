@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/16 00:50:37 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/16 03:50:46 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	is_number(char *number);
 static int	is_interger(char *number);
 static int	is_not_duplicated(t_data *data);
+static int	is_sorted(t_data *data);
 
 void	input_parse(t_data *data)
 {
@@ -30,6 +31,8 @@ void	input_parse(t_data *data)
 	}
 	if (!is_not_duplicated(data))
 		input_error();
+	if (is_sorted(data)) //return 2 if reverse sort
+		ft_putstr("SORTED\n");
 	return ;
 }
 
@@ -95,4 +98,31 @@ static int	is_not_duplicated(t_data *data)
 	}
 	free(values_arr);
 	return (SUCCESS);
+}
+
+static int	is_sorted(t_data *data)
+{
+	int	sorted;
+	int	i;
+
+	sorted = 1;
+	i = 0;
+	while (i < data->number_count - 1 && sorted == 1)
+	{
+		if (ft_atoi(data->values[i]) > ft_atoi(data->values[i + 1]))
+			sorted = 0;
+		i++;
+	}
+	if (sorted == 0)
+	{
+		sorted = 2;
+		i = 0;
+		while (i < data->number_count - 1)
+		{
+			if (ft_atoi(data->values[i]) < ft_atoi(data->values[i + 1]))
+				sorted = 0;
+			i++;
+		}
+	}
+	return (sorted);
 }
