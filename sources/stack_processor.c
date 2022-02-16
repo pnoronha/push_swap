@@ -6,38 +6,55 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:28:49 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/15 02:41:20 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:03:21 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*fill_stack(t_data *data)
+static t_dblst	*new_node(int value, t_dblst *prev);
+
+t_dblst	*fill_stack(t_data *data)
 {
-	t_stack	*new_node;
+	t_dblst	*head;
+	t_dblst *current;
 	int		i;
 
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	i = data->number_count;
-	while (i > 0)
+	i = 0;
+	head = new_node(ft_atoi(data->values[i++]), NULL);
+	current = head;
+	while (i < data->number_count)
 	{
-		new_node->value = ft_atoi(data->values[i]);
-		new_node->next = data->stack_a;
-		data->stack_a = new_node;
-		i--;
+		current->next = new_node(ft_atoi(data->values[i]), current);
+		current = current->next;
+		i++;
 	}
-	return (data->stack_a);
+	return (head);
 }
 
-void	stack_iter(t_stack *stack)
+static t_dblst	*new_node(int value, t_dblst *prev)
 {
-	t_stack	*temp;
+	t_dblst	*new;
 
-	temp = (t_stack *)malloc(sizeof(t_stack));
+	new = (t_dblst *)malloc(sizeof(t_dblst));
+	if (!new)
+		return (NULL);
+	new->prev = prev;
+	new->value = value;
+	new->next = NULL;
+	return (new);
+}
+
+void	stack_iter(t_dblst *stack)
+{
+	t_dblst	*temp;
+
+	temp = (t_dblst *)malloc(sizeof(t_dblst));
 	temp = stack;
 	while (temp != NULL)
 	{
 		ft_putstr(ft_itoa(temp->value));
+		ft_putstr("\n");
 		temp = temp->next;
 	}
 }
