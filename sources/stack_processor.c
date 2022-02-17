@@ -6,18 +6,16 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:28:49 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/15 19:03:21 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:32:08 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_dblst	*new_node(int value, t_dblst *prev);
-
 t_dblst	*fill_stack(t_data *data)
 {
 	t_dblst	*head;
-	t_dblst *current;
+	t_dblst	*current;
 	int		i;
 
 	i = 0;
@@ -32,7 +30,7 @@ t_dblst	*fill_stack(t_data *data)
 	return (head);
 }
 
-static t_dblst	*new_node(int value, t_dblst *prev)
+t_dblst	*new_node(int value, t_dblst *prev)
 {
 	t_dblst	*new;
 
@@ -45,16 +43,35 @@ static t_dblst	*new_node(int value, t_dblst *prev)
 	return (new);
 }
 
-void	stack_iter(t_dblst *stack)
+void	stack_iter(t_dblst **stack)
 {
 	t_dblst	*temp;
 
 	temp = (t_dblst *)malloc(sizeof(t_dblst));
-	temp = stack;
+	temp = *stack;
 	while (temp != NULL)
 	{
 		ft_putstr(ft_itoa(temp->value));
-		ft_putstr("\n");
+		ft_putstr(" ");
 		temp = temp->next;
 	}
+	ft_putstr("\n");
+	free(temp);
+}
+
+int	list_size(t_dblst *stack)
+{
+	t_dblst	*temp;
+	int		count;
+
+	temp = (t_dblst *)malloc(sizeof(t_dblst));
+	temp = stack;
+	count = 0;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		count++;
+	}
+	free(temp);
+	return (count);
 }
