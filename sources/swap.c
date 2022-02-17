@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 22:09:05 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/16 15:03:54 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:01:31 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	swap(t_dblst **head)
 	t_dblst *temp;
 	int	int_swap;
 
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
 	temp = *head;
 	int_swap = temp->value;
 	temp->value = temp->next->value;

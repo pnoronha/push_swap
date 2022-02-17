@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:22:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/16 16:32:19 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:59:03 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ t_dblst	*new_node(int value, t_dblst *prev);
 void	stack_iter(t_dblst **stack);
 int	list_size(t_dblst *stack);
 
-void	push(t_dblst **stack_from, t_dblst **stack_to);
+void	push(t_dblst **pusher, t_dblst **receiver);
 void	swap(t_dblst **head);
+void	rotate(t_dblst **head);
+void	reverse_rotate(t_dblst **head);
 
 #endif

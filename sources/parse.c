@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/16 16:09:48 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:25:43 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	input_parse(t_data *data)
 	if (!is_not_duplicated(data))
 		input_error();
 	if (is_sorted(data))
-		ft_putstr("SORTED\n");
+		return ;
 	return ;
 }
 
