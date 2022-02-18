@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:52:30 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/17 13:30:26 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:51:45 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	reverse_rotate(t_dblst **head)
 		rot = rot->next;
 	}
 	last->next = NULL;
-	ft_putstr("TESTE\n");
 	rot->next = *head;
 	(*head) = rot;
 	(*head)->prev = NULL;
