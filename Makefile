@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/02/14 19:20:20 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/02/26 17:49:33 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,26 +22,35 @@ LIBFT_DIR	:=	./includes/libft
 
 # setting files variables
 BIN			:=	$(BIN_DIR)/$(NAME)
-SOURCES		:=	$(wildcard $(SRC_DIR)/*.c)
+SOURCES		:=	$(SRC_DIR)/push_swap.c \
+				$(SRC_DIR)/parse.c \
+				$(SRC_DIR)/stack_processor.c \
+				$(SRC_DIR)/sorting.c \
+				$(SRC_DIR)/sorting_utils.c \
+				$(SRC_DIR)/push.c \
+				$(SRC_DIR)/swap.c \
+				$(SRC_DIR)/rotate.c \
+				$(SRC_DIR)/moves_rrotate.c
+
 OBJECTS		:=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
 # comilation variables
 CC			:=	gcc
-CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror -O0
+CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror
 
 
 .PHONY: all clean fclean re
 
 # compiling binary executable file
 $(BIN):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
-		$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
+		@$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
 
 all:	$(BIN)
 
 # compiling object files
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | $(BUILD_DIR)
-		$(CC) $(CFLAGS) -c $(^) -o $(@)
+		@$(CC) $(CFLAGS) -c $(^) -o $(@)
 
 # library compilation
 $(LIBFT):

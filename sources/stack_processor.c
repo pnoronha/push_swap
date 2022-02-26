@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   stack_processor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:28:49 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/17 11:43:16 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/23 22:38:05 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_dblst	*fill_stack(t_data *data)
+t_lst	*fill_stack(t_data *data)
 {
-	t_dblst	*head;
-	t_dblst	*current;
+	t_lst	*head;
+	t_lst	*current;
 	int		i;
 
 	i = 0;
@@ -30,11 +30,11 @@ t_dblst	*fill_stack(t_data *data)
 	return (head);
 }
 
-t_dblst	*new_node(int value, t_dblst *prev)
+t_lst	*new_node(int value, t_lst *prev)
 {
-	t_dblst	*new;
+	t_lst	*new;
 
-	new = (t_dblst *)malloc(sizeof(t_dblst));
+	new = (t_lst *)malloc(sizeof(t_lst));
 	if (!new)
 		return (NULL);
 	new->prev = prev;
@@ -43,12 +43,12 @@ t_dblst	*new_node(int value, t_dblst *prev)
 	return (new);
 }
 
-void	stack_iter(t_dblst **stack)
+void	stack_iter(t_lst *stack)
 {
-	t_dblst	*temp;
+	t_lst	*temp;
 
-	temp = (t_dblst *)malloc(sizeof(t_dblst));
-	temp = *stack;
+	temp = (t_lst *)malloc(sizeof(t_lst));
+	temp = stack;
 	while (temp != NULL)
 	{
 		ft_putstr(ft_itoa(temp->value));
@@ -59,12 +59,12 @@ void	stack_iter(t_dblst **stack)
 	free(temp);
 }
 
-int	list_size(t_dblst *stack)
+int	list_size(t_lst *stack)
 {
-	t_dblst	*temp;
+	t_lst	*temp;
 	int		count;
 
-	temp = (t_dblst *)malloc(sizeof(t_dblst));
+	temp = (t_lst *)malloc(sizeof(t_lst));
 	temp = stack;
 	count = 0;
 	while (temp != NULL)

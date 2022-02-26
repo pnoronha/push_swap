@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:22:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/18 18:08:06 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:05:13 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # include "../includes/libft/libft.h"
 # include <stdio.h>
 
-typedef struct s_dblst
+typedef struct s_lst
 {
 	int				value;
 	int				index;
-	struct s_dblst	*next;
-	struct s_dblst	*prev;
-}t_dblst;
+	struct s_lst	*next;
+	struct s_lst	*prev;
+}t_lst;
 
 typedef struct s_data
 {
@@ -35,19 +35,32 @@ typedef struct s_data
 
 int		input_error(void);
 void	input_parse(t_data *data);
+void	invert_sorted(t_data *data);
 
-t_dblst	*fill_stack(t_data *data);
-t_dblst	*new_node(int value, t_dblst *prev);
-void	stack_iter(t_dblst **stack);
-int	list_size(t_dblst *stack);
+t_lst	*fill_stack(t_data *data);
+t_lst	*new_node(int value, t_lst *prev);
+void	stack_iter(t_lst *stack);
+int		list_size(t_lst *stack);
 
-t_dblst	*sorting(t_dblst **stack_a);
-t_dblst	*save_index(t_dblst *stack_a);
-t_dblst *insertion_sort(t_dblst *stack_a);
+void	sorting(t_lst **stack_a, t_data *data);
+t_lst	*save_index(t_lst **stack_a, t_lst *sorted);
+t_lst	*insertion_sort(t_lst *stack_a);
 
-void	push(t_dblst **pusher, t_dblst **receiver);
-void	swap(t_dblst **head);
-void	rotate(t_dblst **head);
-void	reverse_rotate(t_dblst **head);
+void	push(t_lst **pusher, t_lst **receiver);
+void	swap(t_lst **head);
+void	rotate(t_lst **head);
+void	reverse_rotate(t_lst **head);
+
+void	sa(t_lst **a);
+void	sb(t_lst **b);
+void	ss(t_lst **a, t_lst **b);
+void	pa(t_lst **a, t_lst **b);
+void	pb(t_lst **b, t_lst **a);
+void	ra(t_lst **a);
+void	rb(t_lst **b);
+void	rr(t_lst **a, t_lst **b);
+void	rra(t_lst **a);
+void	rrb(t_lst **a);
+void	rrr(t_lst **a, t_lst **b);
 
 #endif

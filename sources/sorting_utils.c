@@ -6,47 +6,71 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:39:34 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/18 18:21:47 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:58:50 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_dblst *sortlist(t_dblst *stack_a);
+static t_lst *sort_aux(t_lst *stack_a);
 
-t_dblst *save_index(t_dblst *stack_a)
+void	invert_sorted(t_data *data)
 {
-	t_dblst	*temp;
-	t_dblst *sorted;
-	int		i;
+	int	i;
 
-	temp = stack_a;
-	sorted = sortlist(stack_a);
-	i = 0;
-	while (sorted->next != NULL)
+	if (data->number_count == 3)
 	{
-		while (temp->next != NULL)
-		{
-			if (sorted->value == temp->value)
-				temp->index = i;
-			temp = temp->next;
-		}
-		sorted = sorted->next;
+		ft_putstr("sa\nrra\n");
+		exit(EXIT_SUCCESS);
+	}
+	i = 0;
+	while (i < data->number_count)
+	{
+		ft_putstr("pb\n");
 		i++;
 	}
-	return (stack_a);
+	while (i > 0)
+	{
+		ft_putstr("rrb\n");
+		ft_putstr("pa\n");
+		i--;
+	}
 }
 
-static t_dblst *sortlist(t_dblst *stack_a)
+t_lst	*save_index(t_lst **stack_a, t_lst *sorted)
 {
-	t_dblst	*head;
-	t_dblst	*index;
+	t_lst	*head;
+	int		i;
+
+	head = *stack_a;
+	sorted = sort_aux(sorted);
+	i = 1;
+	while (sorted != NULL)
+	{
+		*stack_a = head;
+		while (*stack_a != NULL)
+		{
+			if (sorted->value == (*stack_a)->value)
+			{
+				(*stack_a)->index = i++;
+				break ;
+			}
+			(*stack_a) = (*stack_a)->next;
+		}
+		sorted = sorted->next;
+	}
+	*stack_a = head;
+	return (*stack_a);
+}
+
+static t_lst *sort_aux(t_lst *stack_a)
+{
+	t_lst	*head;
+	t_lst	*index;
 	int temp;
 
 	head = stack_a;
 	index = NULL;
-	if (head == NULL)
-		return (NULL);
 	while (stack_a != NULL)
 	{
 		index = stack_a->next;

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:26:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/17 13:53:27 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 19:14:45 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push_empty(t_dblst **pusher, t_dblst **receiver)
+void	push_empty(t_lst **pusher, t_lst **receiver)
 {
-	t_dblst	*temp;
+	t_lst	*temp;
 
 	temp = *pusher;
 	*receiver = temp;
@@ -23,10 +23,10 @@ void	push_empty(t_dblst **pusher, t_dblst **receiver)
 	temp->next = NULL;
 }
 
-void	push_non_empty(t_dblst **pusher, t_dblst **receiver)
+void	push_non_empty(t_lst **pusher, t_lst **receiver)
 {
-	t_dblst	*temp_push;
-	t_dblst	*temp_rcv;
+	t_lst	*temp_push;
+	t_lst	*temp_rcv;
 
 	temp_push = *pusher;
 	temp_rcv = *receiver;
@@ -37,7 +37,7 @@ void	push_non_empty(t_dblst **pusher, t_dblst **receiver)
 	temp_rcv->prev = temp_push;
 }
 
-void	push(t_dblst **pusher, t_dblst **receiver)
+void	push(t_lst **pusher, t_lst **receiver)
 {
 	if (*pusher == NULL || (*pusher)->next == NULL)
 		return ;
@@ -49,4 +49,16 @@ void	push(t_dblst **pusher, t_dblst **receiver)
 	{
 		push_non_empty(&*pusher, &*receiver);
 	}
+}
+
+void	pa(t_lst **a, t_lst **b)
+{
+	push(a, b);
+	ft_putstr("pa\n");
+}
+
+void	pb(t_lst **a, t_lst **b)
+{
+	push(b, a);
+	ft_putstr("pb\n");
 }

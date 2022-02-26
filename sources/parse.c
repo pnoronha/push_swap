@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/17 11:25:43 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 18:31:35 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	input_parse(t_data *data)
 	}
 	if (!is_not_duplicated(data))
 		input_error();
-	if (is_sorted(data))
-		return ;
+	if (is_sorted(data) == 1)
+		exit(EXIT_SUCCESS);
+	if (is_sorted(data) == 2 && data->number_count > 3)
+		invert_sorted(data);
 	return ;
 }
 

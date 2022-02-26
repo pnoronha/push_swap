@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   moves_rrotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 22:09:05 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/24 02:14:14 by pnoronha         ###   ########.fr       */
+/*   Created: 2022/02/24 01:46:07 by pnoronha          #+#    #+#             */
+/*   Updated: 2022/02/26 15:03:34 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap(t_lst **head)
+void	rra(t_lst **a)
 {
-	t_lst *temp;
-	int	int_swap;
-
-	if (*head == NULL || (*head)->next == NULL)
-		return ;
-	temp = *head;
-	int_swap = temp->value;
-	temp->value = temp->next->value;
-	temp->next->value = int_swap;
+	reverse_rotate(a);
+	ft_putstr("rra\n");
 }
 
-void	sa(t_lst **a)
+void	rrb(t_lst **b)
 {
-	swap(a);
-	ft_putstr("sa\n");
+	reverse_rotate(b);
+	ft_putstr("rrb\n");
 }
 
-void	sb(t_lst **b)
+void	rrr(t_lst **a, t_lst **b)
 {
-	swap(b);
-	ft_putstr("sb\n");
-}
-
-void	ss(t_lst **a, t_lst **b)
-{
-	swap(a);
-	swap(b);
-	ft_putstr("ss\n");
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_putstr("rrr\n");
 }
