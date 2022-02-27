@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_processor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:28:49 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/23 22:38:05 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 23:45:39 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_lst	*new_node(int value, t_lst *prev)
 	return (new);
 }
 
-void	stack_iter(t_lst *stack)
+void	stack_iter(t_lst *stack, int flag)
 {
 	t_lst	*temp;
 
@@ -51,7 +51,10 @@ void	stack_iter(t_lst *stack)
 	temp = stack;
 	while (temp != NULL)
 	{
-		ft_putstr(ft_itoa(temp->value));
+		if (flag == 1)
+			ft_putnbr(temp->value);
+		if (flag == 2)
+			ft_putnbr(temp->index);
 		ft_putstr(" ");
 		temp = temp->next;
 	}

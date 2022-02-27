@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 22:09:05 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/24 02:14:14 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 21:31:22 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	swap(t_lst **head)
 	int_swap = temp->value;
 	temp->value = temp->next->value;
 	temp->next->value = int_swap;
+	int_swap = temp->index;
+	temp->index = temp->next->index;
+	temp->next->index = int_swap;
 }
 
 void	sa(t_lst **a)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
+#    By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/02/26 17:49:33 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/02/27 08:22:18 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SOURCES		:=	$(SRC_DIR)/push_swap.c \
 				$(SRC_DIR)/push.c \
 				$(SRC_DIR)/swap.c \
 				$(SRC_DIR)/rotate.c \
-				$(SRC_DIR)/moves_rrotate.c
+				$(SRC_DIR)/reverse_rotate.c \
+				$(SRC_DIR)/small_sort.c \
+				$(SRC_DIR)/big_sort.c
 
 OBJECTS		:=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 LIBFT		:=	$(LIBFT_DIR)/libft.a
@@ -43,7 +45,7 @@ CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror
 .PHONY: all clean fclean re
 
 # compiling binary executable file
-$(BIN):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
+$(NAME):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
 		@$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
 
 all:	$(BIN)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:39:34 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 14:58:50 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/26 21:53:15 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ void	invert_sorted(t_data *data)
 {
 	int	i;
 
-	if (data->number_count == 3)
-	{
-		ft_putstr("sa\nrra\n");
-		exit(EXIT_SUCCESS);
-	}
 	i = 0;
 	while (i < data->number_count)
 	{
@@ -35,6 +30,7 @@ void	invert_sorted(t_data *data)
 		ft_putstr("pa\n");
 		i--;
 	}
+	exit(EXIT_SUCCESS);
 }
 
 t_lst	*save_index(t_lst **stack_a, t_lst *sorted)

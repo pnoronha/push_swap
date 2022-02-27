@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:22:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/24 19:05:13 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/02/27 05:46:19 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_lst
 typedef struct s_data
 {
 	char	**values;
+	int		max;
+	int		min;
+	int		med;
 	int		number_count;
 }t_data;
 
@@ -39,7 +42,7 @@ void	invert_sorted(t_data *data);
 
 t_lst	*fill_stack(t_data *data);
 t_lst	*new_node(int value, t_lst *prev);
-void	stack_iter(t_lst *stack);
+void	stack_iter(t_lst *stack, int flag);
 int		list_size(t_lst *stack);
 
 void	sorting(t_lst **stack_a, t_data *data);
@@ -50,6 +53,11 @@ void	push(t_lst **pusher, t_lst **receiver);
 void	swap(t_lst **head);
 void	rotate(t_lst **head);
 void	reverse_rotate(t_lst **head);
+
+void	small_sort(t_lst **a, t_lst **b, t_data *data);
+void	big_sort(t_lst **a, t_lst **b, t_data *data, int chunks);
+int		get_position(t_lst *a, int value);
+int		get_moves(t_lst *lst, int lsize);
 
 void	sa(t_lst **a);
 void	sb(t_lst **b);
