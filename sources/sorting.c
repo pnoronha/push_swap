@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:01:22 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/01 16:35:42 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 20:21:43 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,10 @@ void	sorting(t_lst **stack_a, t_data *data)
 		if (data->number_count <= 25)
 			big_sort(stack_a, &stack_b, data, 1);
 		else if (data->number_count <= 100)
-			big_sort(stack_a, &stack_b, data, 2);
+			big_sort(stack_a, &stack_b, data, 7);
 		else
-			big_sort(stack_a, &stack_b, data, 2);
+			big_sort(stack_a, &stack_b, data, 11);
 	}
+	stack_iter(*stack_a, 2);
 	lst_delete(&stack_b);
 }

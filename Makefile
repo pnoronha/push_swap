@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/02/27 08:22:18 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/03/01 16:52:28 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,11 @@ NAME		:=	push_swap
 
 # setting all directories variables
 BUILD_DIR	:=	./build
-BIN_DIR		:=	$(BUILD_DIR)/bin
 SRC_DIR		:=	./sources
 OBJ_DIR		:=	$(BUILD_DIR)/objects
 LIBFT_DIR	:=	./includes/libft
 
 # setting files variables
-BIN			:=	$(BIN_DIR)/$(NAME)
 SOURCES		:=	$(SRC_DIR)/push_swap.c \
 				$(SRC_DIR)/parse.c \
 				$(SRC_DIR)/stack_processor.c \
@@ -45,10 +43,10 @@ CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror
 .PHONY: all clean fclean re
 
 # compiling binary executable file
-$(NAME):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
+$(NAME):	$(OBJECTS) | $(LIBFT) $(BUILD_DIR)
 		@$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
 
-all:	$(BIN)
+all:	$(NAME)
 
 # compiling object files
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | $(BUILD_DIR)
@@ -61,7 +59,7 @@ $(LIBFT):
 # building binary and objects directories
 $(BUILD_DIR):
 		@mkdir -p $(BUILD_DIR)
-		@mkdir -p $(OBJ_DIR) $(BIN_DIR)
+		@mkdir -p $(OBJ_DIR)
 
 clean:
 		@rm -rf $(OBJ_DIR)
