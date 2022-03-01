@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:37:50 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 23:45:33 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:24:56 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	input_parse(data);
 	*stack_a = fill_stack(data);
 	sorting(stack_a, data);
+	lst_delete(stack_a);
 	return (EXIT_SUCCESS);
 }
 

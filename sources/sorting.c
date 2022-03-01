@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:01:22 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/27 06:37:28 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 16:35:42 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,17 @@ void	sorting(t_lst **stack_a, t_data *data)
 	stack_b = NULL;
 	sorted = fill_stack(data);
 	*stack_a = save_index(stack_a, sorted);
-	free(sorted);
+	lst_delete(&sorted);
 	if (data->number_count <= 5)
 		small_sort(stack_a, &stack_b, data);
 	else
 	{
 		if (data->number_count <= 25)
-			big_sort(stack_a, &stack_b, data, 2);
+			big_sort(stack_a, &stack_b, data, 1);
 		else if (data->number_count <= 100)
-			big_sort(stack_a, &stack_b, data, data->number_count / 10);
+			big_sort(stack_a, &stack_b, data, 2);
 		else
-			big_sort(stack_a, &stack_b, data, 11);
+			big_sort(stack_a, &stack_b, data, 2);
 	}
+	lst_delete(&stack_b);
 }

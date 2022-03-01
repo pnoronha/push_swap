@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 02:20:52 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/27 02:38:55 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:41:25 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ int	check_sorted(t_lst *lst)
 	free(temp);
 	return (1);
 }
-

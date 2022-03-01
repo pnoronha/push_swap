@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:26:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 20:37:50 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:08:26 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ void	push_empty(t_lst **pusher, t_lst **receiver)
 {
 	*receiver = *pusher;
 	*pusher = (*pusher)->next;
-	(*pusher)->prev = NULL;
 	(*receiver)->next = NULL;
 }
 
 void	push_non_empty(t_lst **pusher, t_lst **receiver)
 {
-	t_lst	*temp_push;
-	t_lst	*temp_rcv;
+	t_lst	*temp;
 
 	if ((*pusher)->next == NULL)
 	{
@@ -33,13 +31,10 @@ void	push_non_empty(t_lst **pusher, t_lst **receiver)
 	}
 	else
 	{
-		temp_push = *pusher;
-		temp_rcv = *receiver;
-		*receiver = temp_push;
-		*pusher = temp_push->next;
-		temp_push->next->prev = NULL;
-		temp_push->next = temp_rcv;
-		temp_rcv->prev = temp_push;
+		temp = *receiver;
+		*receiver = *pusher;
+		*pusher = (*pusher)->next;
+		(*receiver)->next = temp;
 	}
 }
 
@@ -48,13 +43,9 @@ void	push(t_lst **pusher, t_lst **receiver)
 	if (*pusher == NULL)
 		return ;
 	if (list_size(*receiver) == 0)
-	{
 		push_empty(pusher, receiver);
-	}
 	else
-	{
 		push_non_empty(pusher, receiver);
-	}
 }
 
 void	pa(t_lst **a, t_lst **b)

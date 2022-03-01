@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_rrotate.c                                    :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:46:07 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 10:43:14 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:53:08 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	reverse_rotate(t_lst **head)
 	last->next = NULL;
 	rot->next = *head;
 	(*head) = rot;
-	(*head)->prev = NULL;
 }
 
 void	rra(t_lst **a)

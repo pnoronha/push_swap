@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:52:30 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 10:43:01 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:53:03 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	rotate(t_lst **head)
 	*head = first->next;
 	first->next = NULL;
 	last->next = first;
-	(*head)->prev = NULL;
 }
 
 void	ra(t_lst **a)

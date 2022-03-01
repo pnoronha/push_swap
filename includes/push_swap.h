@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:22:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/27 05:46:19 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/01 12:47:08 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_lst
 	int				value;
 	int				index;
 	struct s_lst	*next;
-	struct s_lst	*prev;
 }t_lst;
 
 typedef struct s_data
@@ -32,7 +31,6 @@ typedef struct s_data
 	char	**values;
 	int		max;
 	int		min;
-	int		med;
 	int		number_count;
 }t_data;
 
@@ -41,7 +39,7 @@ void	input_parse(t_data *data);
 void	invert_sorted(t_data *data);
 
 t_lst	*fill_stack(t_data *data);
-t_lst	*new_node(int value, t_lst *prev);
+void	lst_delete(t_lst **lst);
 void	stack_iter(t_lst *stack, int flag);
 int		list_size(t_lst *stack);
 
