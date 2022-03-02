@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnoronha <pnoronha@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 22:09:05 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/02/26 21:31:22 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:56:52 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap(t_lst **head)
 {
-	t_lst *temp;
-	int	int_swap;
+	t_lst	*temp;
+	int		int_swap;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;

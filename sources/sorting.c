@@ -6,83 +6,62 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:01:22 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/01 20:21:43 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/02 22:24:10 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		get_max(t_lst *lst)
+static t_lst	*sort_aux(t_lst *stack_a)
 {
-	int	max;
+	t_lst	*head;
+	t_lst	*index;
+	int		temp;
 
-	max = lst->index;
-	lst = lst->next;
-	while (lst != NULL)
+	head = stack_a;
+	index = NULL;
+	while (stack_a != NULL)
 	{
-		if (lst->index > max)
-			max = lst->index;
-		lst = lst->next;
-	}
-	return (max);
-}
-
-int		get_min(t_lst *lst)
-{
-	int	min;
-
-	min = lst->index;
-	lst = lst->next;
-	while (lst != NULL)
-	{
-		if (lst->index < min)
-			min = lst->index;
-		lst = lst->next;
-	}
-	return (min);
-}
-
-int		get_moves(t_lst *lst, int lsize)
-{
-	int	ret;
-	int	pos_min;
-	int pos_max;
-
-	pos_min = get_position(lst, get_min(lst));
-	pos_max = get_position(lst, get_max(lst));
-	if (pos_min < (lsize - pos_min) && pos_max < (lsize - pos_max))
-		ret = 1;
-	else if (pos_min > (lsize - pos_min) && pos_max > (lsize - pos_max))
-		ret = 2;
-	else
-		if (pos_min < (lsize / 2))
+		index = stack_a->next;
+		while (index != NULL)
 		{
-			if (pos_min < (lsize - pos_max) + 1)
-				ret = 1;
-			else
-				ret = 2;
+			if (stack_a->value > index->value)
+			{
+				temp = stack_a->value;
+				stack_a->value = index->value;
+				index->value = temp;
+			}
+			index = index->next;
 		}
-		else
-		{
-			if (pos_max < (lsize - pos_min) + 1)
-				ret = 1;
-			else
-				ret = 2;
-		}
-	return (ret);
+		stack_a = stack_a->next;
+	}
+	return (head);
 }
 
-int		get_position(t_lst *a, int value)
+static t_lst	*save_index(t_lst **stack_a, t_lst *sorted)
 {
-	int	pos;
+	t_lst	*head;
+	int		i;
 
-	pos = 1;
-	while (a->index != value)
+	head = *stack_a;
+	sorted = sort_aux(sorted);
+	i = 1;
+	while (sorted != NULL)
 	{
-		a = a->next;
-		pos++;
+		*stack_a = head;
+		while (*stack_a != NULL)
+		{
+			if (sorted->value == (*stack_a)->value)
+			{
+				(*stack_a)->index = i++;
+				break ;
+			}
+			(*stack_a) = (*stack_a)->next;
+		}
+		sorted = sorted->next;
 	}
-	return (pos);
+	*stack_a = head;
+	return (*stack_a);
 }
 
 void	sorting(t_lst **stack_a, t_data *data)
@@ -92,8 +71,6 @@ void	sorting(t_lst **stack_a, t_data *data)
 
 	if (!*stack_a || (*stack_a)->next == NULL)
 		return ;
-	sorted = (t_lst *)malloc(sizeof(t_lst));
-	stack_b = (t_lst *)malloc(sizeof(t_lst));
 	stack_b = NULL;
 	sorted = fill_stack(data);
 	*stack_a = save_index(stack_a, sorted);
@@ -105,10 +82,9 @@ void	sorting(t_lst **stack_a, t_data *data)
 		if (data->number_count <= 25)
 			big_sort(stack_a, &stack_b, data, 1);
 		else if (data->number_count <= 100)
-			big_sort(stack_a, &stack_b, data, 7);
+			big_sort(stack_a, &stack_b, data, 3);
 		else
-			big_sort(stack_a, &stack_b, data, 11);
+			big_sort(stack_a, &stack_b, data, 7);
 	}
-	stack_iter(*stack_a, 2);
 	lst_delete(&stack_b);
 }

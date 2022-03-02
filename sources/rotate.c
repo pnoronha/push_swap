@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:52:30 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/01 10:53:03 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:56:23 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	rotate(t_lst **head)
 {
 	t_lst	*last;
-	t_lst *first;
+	t_lst	*first;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
