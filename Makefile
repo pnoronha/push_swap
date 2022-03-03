@@ -6,7 +6,7 @@
 #    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/03/03 21:24:18 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/03/03 21:52:19 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES		:=	$(SRC_DIR)/main.c			\
 				$(SRC_DIR)/reverse_rotate.c	\
 				$(SRC_DIR)/small_sort.c		\
 				$(SRC_DIR)/big_sort.c
-				
+
 OBJECTS		:=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
@@ -50,7 +50,7 @@ $(NAME): $(BIN)
 # compiling binary executable file
 $(BIN):	$(OBJECTS) | $(LIBFT) $(BIN_DIR)
 		@$(CC) $(CFLAGS) -o $(@) $(^) -L$(LIBFT_DIR) -lft
-
+		@echo "\033[32;1m\n>>	>>push_swap<<	<<\033[0m"
 
 # compiling object files
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | $(BUILD_DIR)
