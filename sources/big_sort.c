@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 03:18:03 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/02 20:43:07 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/03 21:34:49 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ static void	push_chunk(t_lst **a, t_lst **b, t_data *data, int chunk_size)
 	}
 }
 
+static void	best_b_rotation(t_lst **b, t_data **data)
+{
+	if ((*b)->index == (*data)->max - 1 && (*b)->next->index == (*data)->max)
+		sb(b);
+	else if ((*b)->index == (*data)->min + 2
+		&& (*b)->next->index == (*data)->min + 1)
+		sb(b);
+	else
+	{
+		if (get_moves(*b, list_size(*b)) == 1)
+			rb(b);
+		else
+			rrb(b);
+	}
+}
+
 static void	push_chunk_back(t_lst **a, t_lst **b, t_data **data)
 {
 	while (*b != NULL)
@@ -48,16 +64,14 @@ static void	push_chunk_back(t_lst **a, t_lst **b, t_data **data)
 		else if ((*b)->index == ((*data)->min + 1))
 		{
 			pa(a, b);
-			ra(a);
+			if (get_moves(*b, list_size(*b)) == 1)
+				rr(a, b);
+			else
+				ra(a);
 			(*data)->min++;
 		}
 		else
-		{
-			if (get_moves(*b, list_size(*b)) == 1)
-				rb(b);
-			else
-				rrb(b);
-		}
+			best_b_rotation(b, data);
 	}
 }
 
