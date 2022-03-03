@@ -6,7 +6,7 @@
 #    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/03/02 22:33:55 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/03/03 21:24:18 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SOURCES		:=	$(SRC_DIR)/main.c			\
 				$(SRC_DIR)/reverse_rotate.c	\
 				$(SRC_DIR)/small_sort.c		\
 				$(SRC_DIR)/big_sort.c
+				
 OBJECTS		:=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
