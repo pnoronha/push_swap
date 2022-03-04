@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:22:57 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/02 22:36:05 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:49:49 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define FAILURE	0
 
 # include "libft/libft.h"
+# include <limits.h>
 
 typedef struct s_lst
 {
@@ -34,7 +35,7 @@ typedef struct s_data
 }t_data;
 
 int		input_error(void);
-void	input_parse(t_data *data);
+int		input_parse(t_data *data);
 
 t_lst	*fill_stack(t_data *data);
 void	lst_delete(t_lst **lst);

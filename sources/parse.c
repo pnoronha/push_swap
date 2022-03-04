@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/02 22:21:06 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:39:25 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,57 +70,36 @@ static int	is_sorted(t_data *data)
 
 static int	is_interger(char *number)
 {
-	char	*tmp_char;
+	int	index;
 
 	if (!*number)
 		return (FAILURE);
-	tmp_char = ft_itoa(ft_atoi(number));
-	if (ft_strlen(number) != ft_strlen(tmp_char)
-		|| ft_strncmp(tmp_char, number, ft_strlen(number)))
-	{
-		free(tmp_char);
-		return (FAILURE);
-	}
-	else
-	{
-		free(tmp_char);
-		return (SUCCESS);
-	}
-}
-
-static int	is_number(char *number)
-{
-	if (!*number)
-		return (FAILURE);
-	if (*number == '-')
-		number++;
-	while (*number != '\0')
-	{
-		if (*number < '0' || *number > '9')
+	index = 0;
+	if (number[index] == '-' || number[index] == '+')
+		index++;
+	while (number[index])
+		if (!ft_isdigit(number[index++]))
 			return (FAILURE);
-		number++;
-	}
+	if (ft_atol(number) < INT_MIN || ft_atol(number) > INT_MAX)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
-void	input_parse(t_data *data)
+int	input_parse(t_data *data)
 {
 	int		index;
 
 	index = 0;
 	while (index < data->number_count)
 	{
-		if (!is_number(data->values[index])
-			|| !is_interger(data->values[index]))
-			input_error();
-		index++;
+		if (ft_strncmp(data->values[index], "", 2))
+			index += 2;
+		else if (!is_interger(data->values[index++]))
+			return (FAILURE);
 	}
 	if (!is_not_duplicated(data))
-		input_error();
+		return (FAILURE);
 	else if (is_sorted(data) == 1)
-	{
-		free(data);
 		exit(EXIT_SUCCESS);
-	}
-	return ;
+	return (SUCCESS);
 }

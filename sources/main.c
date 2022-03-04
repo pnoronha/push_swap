@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:37:50 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/02 20:01:56 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/04 19:40:29 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	main(int argc, char **argv)
 	t_lst	**stack_a;
 
 	if (argc < 2)
-		input_error();
+		return (0);
 	data.number_count = (argc - 1);
 	data.values = (argv + 1);
-	input_parse(&data);
+	if (!input_parse(&data))
+		input_error();
 	stack_a = (t_lst **)malloc(sizeof(t_lst));
 	*stack_a = fill_stack(&data);
 	sorting(stack_a, &data);

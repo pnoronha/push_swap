@@ -6,7 +6,7 @@
 #    By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 14:28:20 by pnoronha          #+#    #+#              #
-#    Updated: 2022/03/03 21:52:19 by pnoronha         ###   ########.fr        #
+#    Updated: 2022/03/04 15:37:59 by pnoronha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBFT		:=	$(LIBFT_DIR)/libft.a
 
 # comilation variables
 CC			:=	gcc
-CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror
+CFLAGS		:=	-I./includes -I$(LIBFT_DIR) -Wall -Wextra -Werror -fsanitize=address
 
 .PHONY: all clean fclean re
 
