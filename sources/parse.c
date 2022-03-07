@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/07 16:50:17 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:51:07 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ static int	is_interger(char *number)
 		return (FAILURE);
 	index = 0;
 	if (number[index] == '-' || number[index] == '+')
+	{
 		index++;
+		if (!number[index])
+			return (FAILURE);
+	}
 	while (number[index])
 		if (!ft_isdigit(number[index++]))
 			return (FAILURE);
@@ -81,9 +85,7 @@ int	input_parse(t_data *data)
 	index = 0;
 	while (index < data->number_count)
 	{
-		if (ft_strncmp(data->values[index], "", 2))
-			index += 2;
-		else if (!is_interger(data->values[index++]))
+		if (!is_interger(data->values[index++]))
 			return (FAILURE);
 	}
 	if (!is_not_duplicated(data))
