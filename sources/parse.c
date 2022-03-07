@@ -6,7 +6,7 @@
 /*   By: pnoronha <pnoronha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:43:17 by pnoronha          #+#    #+#             */
-/*   Updated: 2022/03/04 15:39:25 by pnoronha         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:50:17 by pnoronha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,11 @@ static int	is_sorted(t_data *data)
 
 	sorted = 1;
 	i = 0;
-	while (i < data->number_count - 1 && sorted == 1)
+	while (i < data->number_count - 1)
 	{
 		if (ft_atoi(data->values[i]) > ft_atoi(data->values[i + 1]))
 			sorted = 0;
 		i++;
-	}
-	if (sorted == 0)
-	{
-		sorted = 2;
-		i = 0;
-		while (i < data->number_count - 1)
-		{
-			if (ft_atoi(data->values[i]) < ft_atoi(data->values[i + 1]))
-				sorted = 0;
-			i++;
-		}
 	}
 	return (sorted);
 }
@@ -99,7 +88,7 @@ int	input_parse(t_data *data)
 	}
 	if (!is_not_duplicated(data))
 		return (FAILURE);
-	else if (is_sorted(data) == 1)
+	else if (is_sorted(data))
 		exit(EXIT_SUCCESS);
 	return (SUCCESS);
 }
